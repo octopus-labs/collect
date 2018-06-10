@@ -1,0 +1,30 @@
+{
+  "name": "airpay-collect",
+  "version": "1.0.0",
+  "description": "Airpay payment methods that can be embedded in your app",
+  "main": "index.js",
+  "browser": "lib/browser/index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "budo index.js:bundle.js --live",
+    "build": "browserify -t deamdify -t es6ify -t deglobalify index.js -d --s airpay -o | exorcist dist/bundle.map.min.js | uglifyjs -cm > dist/bundle.min.js"
+  },
+  "browserify": {
+    "transform": "deamdify"
+  },
+  "author": "Octopus Labs",
+  "license": "ISC",
+  "dependencies": {
+    "qrcode": "^1.2.0"
+  },
+  "devDependencies": {
+    "budo": "^11.2.2",
+    "deamdify": "^0.3.0",
+    "deglobalify": "^0.2.0",
+    "es6ify": "^1.6.0",
+    "exorcist": "^1.0.1",
+    "tape": "^4.9.1",
+    "uglify-js": "^3.4.0"
+  },
+  "repository": {}
+}
