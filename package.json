@@ -5,7 +5,10 @@
   "main": "index.js",
   "browser": "lib/browser/index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node test/node.spec.js && browserify test/*.js | testling",
+    "test-node": "node test/node.spec.js",
+    "test-browser": "browserify test/*.js | testling",
+    "coverage": "covert test/*.js",
     "start": "budo index.js:bundle.js --live",
     "build": "browserify -t deamdify -t es6ify -t deglobalify index.js -d --s airpay -o | exorcist dist/bundle.map.min.js | uglifyjs -cm > dist/bundle.min.js"
   },
@@ -19,6 +22,8 @@
   },
   "devDependencies": {
     "budo": "^11.2.2",
+    "coverify": "^1.5.0",
+    "covert": "^1.1.0",
     "deamdify": "^0.3.0",
     "deglobalify": "^0.2.0",
     "es6ify": "^1.6.0",
