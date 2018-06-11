@@ -27,8 +27,9 @@ test('Should return the qrcode', function (t){
     airpay.initialize('1111111')
     airpay.Qrcode()
           .then(function(s){
-            t.equal(typeof s, 'string', 'Should return a base 64 uri string of the qr code')
-          }, function(e){
-            t.fail('This should return a successful promise because api has been initialized.')
+            t.equal(typeof s, 'object', 'Should return a success object from the server containing a token.')
+          })
+          .catch(function(e){
+            t.ok(typeof e, 'object', 'Should return an error object from server stating why it failed.')
           })
 })
